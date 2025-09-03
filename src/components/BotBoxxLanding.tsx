@@ -3,6 +3,8 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
+import { supabase } from '@/integrations/supabase/client';
+import { useToast } from '@/components/ui/use-toast';
 import { 
   Zap, 
   Target, 
@@ -31,7 +33,14 @@ import {
 import heroImage from '@/assets/hero-dashboard.jpg';
 
 const BotBoxxLanding = () => {
-  const [email, setEmail] = useState('');
+  const { toast } = useToast();
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    company: '',
+    phone: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [timeLeft, setTimeLeft] = useState({
     days: 7,
     hours: 23,
@@ -59,10 +68,58 @@ const BotBoxxLanding = () => {
     return () => clearInterval(timer);
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const scrollToForm = () => {
+    document.getElementById('lead-form')?.scrollIntoView({ 
+      behavior: 'smooth',
+      block: 'center'
+    });
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log('Email submitted:', email);
+    setIsSubmitting(true);
+    
+    try {
+      const { error } = await supabase
+        .from('leads')
+        .insert({
+          name: formData.name,
+          email: formData.email,
+          company: formData.company,
+          phone: formData.phone || null
+        });
+      
+      if (error) throw error;
+      
+      toast({
+        title: "¡Éxito!",
+        description: "Tu información ha sido enviada. Te contactaremos pronto.",
+      });
+      
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        company: '',
+        phone: ''
+      });
+    } catch (error) {
+      console.error('Error:', error);
+      toast({
+        title: "Error",
+        description: "Hubo un problema al enviar tu información. Intenta nuevamente.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -88,14 +145,35 @@ const BotBoxxLanding = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
-              <Button className="btn-hero text-xl px-12 py-6 glow-hover">
+              <Button onClick={scrollToForm} className="btn-hero text-xl px-12 py-6 glow-hover">
                 PROBAR GRATIS AHORA
                 <ArrowRight className="ml-2 h-6 w-6" />
               </Button>
-              <Button className="btn-secondary text-lg px-8 py-4">
+              <Button onClick={scrollToForm} className="btn-secondary text-lg px-8 py-4">
                 <Play className="mr-2 h-5 w-5" />
-                VER DEMO EN VIVO
+                COMENZAR AHORA
               </Button>
+            </div>
+            
+            {/* VSL Video Section */}
+            <div className="max-w-4xl mx-auto mb-16">
+              <Card className="feature-card p-8">
+                <h3 className="text-2xl font-bold text-center mb-6">
+                  🎥 Mira cómo <span className="gradient-text">BotBoxx</span> transforma tu negocio
+                </h3>
+                <div className="aspect-video bg-gradient-to-br from-primary/10 to-secondary/10 rounded-lg flex items-center justify-center border border-primary/20">
+                  {/* Replace this div with your YouTube embed or video player */}
+                  <div className="text-center">
+                    <Play className="h-16 w-16 text-primary mx-auto mb-4" />
+                    <p className="text-lg text-muted-foreground">
+                      Coloca aquí tu video VSL de YouTube
+                    </p>
+                    <p className="text-sm text-muted-foreground mt-2">
+                      iframe src="https://www.youtube.com/embed/TU_VIDEO_ID"
+                    </p>
+                  </div>
+                </div>
+              </Card>
             </div>
             
             <div className="relative">
@@ -698,7 +776,7 @@ const BotBoxxLanding = () => {
       </section>
 
       {/* Lead Capture Form */}
-      <section className="section-padding">
+      <section id="lead-form" className="section-padding">
         <div className="container mx-auto">
           <Card className="feature-card max-w-2xl mx-auto text-center">
             <h2 className="heading-md mb-4">¿Listo Para <span className="gradient-text">Automatizar Tus Ventas?</span></h2>
@@ -709,33 +787,47 @@ const BotBoxxLanding = () => {
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid md:grid-cols-2 gap-4">
                 <Input 
+                  name="name"
                   placeholder="Tu nombre"
                   className="glass-card"
+                  value={formData.name}
+                  onChange={handleInputChange}
                   required
                 />
                 <Input 
+                  name="email"
                   placeholder="Tu email"
                   type="email"
                   className="glass-card"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  value={formData.email}
+                  onChange={handleInputChange}
                   required
                 />
               </div>
               <div className="grid md:grid-cols-2 gap-4">
                 <Input 
+                  name="company"
                   placeholder="Tu empresa"
                   className="glass-card"
+                  value={formData.company}
+                  onChange={handleInputChange}
                   required
                 />
                 <Input 
+                  name="phone"
                   placeholder="Teléfono (opcional)"
                   className="glass-card"
+                  value={formData.phone}
+                  onChange={handleInputChange}
                 />
               </div>
               
-              <Button type="submit" className="btn-hero w-full text-xl py-6">
-                CREAR MI AGENTE IA GRATIS
+              <Button 
+                type="submit" 
+                disabled={isSubmitting}
+                className="btn-hero w-full text-xl py-6"
+              >
+                {isSubmitting ? 'ENVIANDO...' : 'CREAR MI AGENTE IA GRATIS'}
                 <Bot className="ml-2 h-6 w-6" />
               </Button>
             </form>
@@ -778,7 +870,7 @@ const BotBoxxLanding = () => {
               <p className="text-lg">⚡ Garantía: 30 días o te devolvemos el dinero</p>
             </div>
             
-            <Button className="btn-hero text-xl px-12 py-6 animate-pulse-glow">
+            <Button onClick={scrollToForm} className="btn-hero text-xl px-12 py-6 animate-pulse-glow">
               RECLAMAR OFERTA AHORA
               <Clock className="ml-2 h-6 w-6" />
             </Button>
@@ -794,12 +886,12 @@ const BotBoxxLanding = () => {
           </h2>
           
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-            <Button className="btn-hero text-xl px-12 py-6">
+            <Button onClick={scrollToForm} className="btn-hero text-xl px-12 py-6">
               PROBAR GRATIS AHORA
               <ArrowRight className="ml-2 h-6 w-6" />
             </Button>
-            <Button className="btn-secondary text-lg px-8 py-4">
-              VER DEMO EN VIVO
+            <Button onClick={scrollToForm} className="btn-secondary text-lg px-8 py-4">
+              COMENZAR AHORA
               <Play className="ml-2 h-5 w-5" />
             </Button>
           </div>
