@@ -261,6 +261,202 @@ const BotBoxxLanding = () => {
         </div>
       </section>
 
+      {/* Emotional Impact Section */}
+      <section className="section-padding relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-danger/5 via-transparent to-success/5"></div>
+        
+        <div className="container mx-auto relative z-10">
+          <div className="text-center mb-16">
+            <h2 className="heading-lg mb-8">
+              La <span className="gradient-text">Revolución</span> Que Está Cambiando Todo
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Mientras tus competidores siguen perdiendo clientes por la noche, 
+              empresas inteligentes ya están generando ventas mientras duermen.
+            </p>
+          </div>
+          
+          <div className="grid lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto mb-16">
+            {/* ANTES - Left Side */}
+            <Card className="feature-card border-danger/30 relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-danger/10 to-transparent"></div>
+              <div className="relative z-10 p-8">
+                <div className="text-center mb-8">
+                  <div className="inline-flex items-center px-4 py-2 bg-danger/20 text-danger rounded-full mb-4">
+                    <span className="text-sm font-bold">ANTES DE BOTBOXX</span>
+                  </div>
+                  <div className="text-6xl mb-4">😰</div>
+                  <h3 className="text-2xl font-bold text-danger mb-4">El Caos de Antes</h3>
+                </div>
+                
+                <div className="space-y-6">
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 bg-danger/20 rounded-full flex items-center justify-center flex-shrink-0">
+                      <span className="text-danger font-bold">🔥</span>
+                    </div>
+                    <div>
+                      <p className="font-semibold">Perdían 60% de leads nocturnos</p>
+                      <p className="text-sm text-muted-foreground">Los clientes se iban a la competencia</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 bg-danger/20 rounded-full flex items-center justify-center flex-shrink-0">
+                      <span className="text-danger font-bold">💸</span>
+                    </div>
+                    <div>
+                      <p className="font-semibold">$15,000/mes en personal</p>
+                      <p className="text-sm text-muted-foreground">Solo para responder lo básico</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 bg-danger/20 rounded-full flex items-center justify-center flex-shrink-0">
+                      <span className="text-danger font-bold">⏰</span>
+                    </div>
+                    <div>
+                      <p className="font-semibold">4+ horas de respuesta</p>
+                      <p className="text-sm text-muted-foreground">Los leads ya habían decidido</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 bg-danger/20 rounded-full flex items-center justify-center flex-shrink-0">
+                      <span className="text-danger font-bold">😵</span>
+                    </div>
+                    <div>
+                      <p className="font-semibold">Equipo saturado y estresado</p>
+                      <p className="text-sm text-muted-foreground">Burnout y alta rotación</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Card>
+            
+            {/* DESPUÉS - Right Side */}
+            <Card className="feature-card border-success/30 relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-success/10 to-transparent"></div>
+              <div className="relative z-10 p-8">
+                <div className="text-center mb-8">
+                  <div className="inline-flex items-center px-4 py-2 bg-success/20 text-success rounded-full mb-4">
+                    <span className="text-sm font-bold">DESPUÉS DE BOTBOXX</span>
+                  </div>
+                  <div className="text-6xl mb-4">🚀</div>
+                  <h3 className="text-2xl font-bold text-success mb-4">La Transformación</h3>
+                </div>
+                
+                <div className="space-y-6">
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 bg-success/20 rounded-full flex items-center justify-center flex-shrink-0">
+                      <span className="text-success font-bold">✅</span>
+                    </div>
+                    <div>
+                      <p className="font-semibold">95% de leads capturados 24/7</p>
+                      <p className="text-sm text-muted-foreground">Nunca más pierden una oportunidad</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 bg-success/20 rounded-full flex items-center justify-center flex-shrink-0">
+                      <span className="text-success font-bold">💰</span>
+                    </div>
+                    <div>
+                      <p className="font-semibold">$500/mes total</p>
+                      <p className="text-sm text-muted-foreground">97% menos en costos operativos</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 bg-success/20 rounded-full flex items-center justify-center flex-shrink-0">
+                      <span className="text-success font-bold">⚡</span>
+                    </div>
+                    <div>
+                      <p className="font-semibold">Respuesta inmediata</p>
+                      <p className="text-sm text-muted-foreground">Los leads no tienen tiempo de irse</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 bg-success/20 rounded-full flex items-center justify-center flex-shrink-0">
+                      <span className="text-success font-bold">😎</span>
+                    </div>
+                    <div>
+                      <p className="font-semibold">Equipo enfocado en ventas</p>
+                      <p className="text-sm text-muted-foreground">Solo atienden leads calificados</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Card>
+          </div>
+          
+          {/* Transformation Arrow */}
+          <div className="flex justify-center mb-16">
+            <div className="relative">
+              <ArrowRight className="h-16 w-16 text-primary animate-pulse-glow" />
+              <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 whitespace-nowrap">
+                <Badge className="bg-primary/20 text-primary border-primary/30">
+                  TRANSFORMACIÓN COMPLETA
+                </Badge>
+              </div>
+            </div>
+          </div>
+          
+          {/* Success Stories */}
+          <div className="grid md:grid-cols-3 gap-8 mb-16">
+            <Card className="feature-card text-center relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-success/5"></div>
+              <div className="relative z-10 p-6">
+                <div className="text-4xl mb-4">📈</div>
+                <div className="text-3xl font-bold text-success mb-2">+847%</div>
+                <p className="text-sm text-muted-foreground mb-4">Incremento en leads calificados</p>
+                <p className="text-xs font-semibold">"TechSolutions Argentina"</p>
+              </div>
+            </Card>
+            
+            <Card className="feature-card text-center relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-primary/5"></div>
+              <div className="relative z-10 p-6">
+                <div className="text-4xl mb-4">💎</div>
+                <div className="text-3xl font-bold text-primary mb-2">$180k</div>
+                <p className="text-sm text-muted-foreground mb-4">Ahorrado en primer año</p>
+                <p className="text-xs font-semibold">"Marketing Pro LATAM"</p>
+              </div>
+            </Card>
+            
+            <Card className="feature-card text-center relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-accent/5"></div>
+              <div className="relative z-10 p-6">
+                <div className="text-4xl mb-4">⚡</div>
+                <div className="text-3xl font-bold text-accent mb-2">2 min</div>
+                <p className="text-sm text-muted-foreground mb-4">Tiempo promedio de respuesta</p>
+                <p className="text-xs font-semibold">"Consultoría Empresarial"</p>
+              </div>
+            </Card>
+          </div>
+          
+          {/* Emotional CTA */}
+          <div className="text-center">
+            <div className="glass-card p-8 rounded-3xl max-w-3xl mx-auto">
+              <h3 className="text-2xl font-bold mb-4">
+                ¿Seguirás Perdiendo Ventas Esta Noche?
+              </h3>
+              <p className="text-lg text-muted-foreground mb-8">
+                Mientras lees esto, tus competidores ya están capturando leads que podrían ser tuyos.
+                Cada minuto que pasa sin BotBoxx es dinero que se va de tus manos.
+              </p>
+              <Button onClick={scrollToForm} className="btn-hero text-xl px-12 py-6 animate-pulse-glow">
+                BASTA DE PERDER VENTAS - EMPEZAR AHORA
+                <ArrowRight className="ml-2 h-6 w-6" />
+              </Button>
+              <p className="text-sm text-muted-foreground mt-4">
+                ⏰ Configuración en 5 minutos • 🆓 Prueba completamente gratis
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Solution Demo Section */}
       <section className="section-padding">
         <div className="container mx-auto text-center">
